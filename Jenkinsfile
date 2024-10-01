@@ -17,7 +17,7 @@ pipeline {
         // }
         stage('Setup') {
             steps {
-                sh "pip install -r jenkins-project/requirements.txt"
+                sh "pip3 install -r jenkins-project/requirements.txt"
             }
         }
         stage('Test') {
