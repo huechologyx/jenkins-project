@@ -8,17 +8,24 @@ pipeline {
 
     // }
 
-    environment {
-        SERVER_CREDS=credentials('server-creds')
-    }
+    // environment {
+    //     SERVER_CREDS=credentials('server-creds')
+    // }
 
     stages {
 
                 stage('setup') {
                     steps {
-                        echo "my creds: ${SERVER_CREDS}"
-                        echo "Username: ${SERVER_CREDS_USR}"
-                        echo "Passwor: ${SERVER_CREDS_PSW}"
+
+                        withCredentials([usernamePassword(credentialsId: 'server-creds', usernameVariable: "myuser", passwordVariable: "mypassword")]) {
+                            sh '''
+                            echo username: ${myuser}
+                            echo password: ${mypassword}
+                            '''
+                        }
+                        // echo "my creds: ${SERVER_CREDS}"
+                        // echo "Username: ${SERVER_CREDS_USR}"
+                        // echo "Password: ${SERVER_CREDS_PSW}"
                     }
                 }
 
