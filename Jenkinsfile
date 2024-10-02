@@ -14,8 +14,9 @@ parameters {
                     params.RUN_TESTS == true
                 }
             }
-
+            steps {
             echo "testing application"
+            }
         }
 
         stage('Deploy'){
