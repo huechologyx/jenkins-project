@@ -34,8 +34,8 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'MY_SSH_KEY', usernameVariable: 'username')]) {
                     sh '''
-                    scp -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@{SERVER_IP}:/home/ubuntu/
-                    ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@{SERVER_IP} << EOF
+                    scp -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@${SERVER_IP}:/home/ubuntu/
+                    ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@${SERVER_IP} << EOF
                         unzip -o /home/ubuntu/myapp.zip -d /home/ubuntu/app/
                         source app/venv/bin/activate
                         cd /home/ubuntu/app/
