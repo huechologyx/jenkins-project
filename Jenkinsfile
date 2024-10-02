@@ -19,7 +19,7 @@ pipeline {
         stage('Test'){
             steps {
                 sh 'ls -lh'
-                sh 'pytest'
+                sh 'python3-pytest'
             }
         }
 
