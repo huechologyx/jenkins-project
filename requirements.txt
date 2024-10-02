@@ -32,5 +32,4 @@ tqdm==4.66.1
 typing_extensions==4.9.0
 urllib3==2.1.0
 Werkzeug==3.0.1
-python3-full==3.12.3-0ubuntu2
-python3-pytest==7.4.4-1
+
