@@ -3,7 +3,7 @@ pipeline {
 
 parameters {
     string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Specify the environment for development')
-    booleanParams(name: 'RUN_TESTS', defaultValue: true, description: "Run Tests in pipeline")
+    booleanParam(name: 'RUN_TESTS', defaultValue: true, description: "Run Tests in pipeline")
 
 }
 
