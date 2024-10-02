@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy to Prod'){
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'MY_SSH_KEY', usernameVariable: 'username')]) {
-                    ssh '''
+                    sh '''
                     scp -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@{SERVER_IP}:/home/ubuntu/
                     ssh -i $MY_SSH_KEY -o StrictHostKeyChecking=no myapp.zip ${username}@{SERVER_IP} << EOF
                         unzip -o /home/ubuntu/myapp.zip -d /home/ubuntu/app/
