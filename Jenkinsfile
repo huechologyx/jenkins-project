@@ -18,6 +18,7 @@ pipeline {
 
         stage('Test'){
             steps {
+                sh 'ls -lh'
                 sh 'pytest'
             }
         }
