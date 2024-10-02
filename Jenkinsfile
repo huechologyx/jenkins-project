@@ -1,38 +1,30 @@
 pipeline {
     agent any
 
-    options {
-        timeout(time: 1, unit: 'MINUTES')
-    }
+parameters {
+    string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Specify the environment for development')
+    booleanParams(name: 'RUN_TESTS', defaultValue: true, description: "Run Tests in pipeline")
+
+}
 
     stages {
-
-        stage('lint and format'){
-
-                steps {
-                    sh "sleep 70"
+        stage('Test') {
+            when {
+                expression {
+                    params.RUN_TESTS == true
                 }
+            }
 
+            echo "testing application"
         }
 
-                stage('setup') {
-                    steps {
+        stage('Deploy'){
+            steps {
+                echo "deploying to ${params.ENVIRONMENT} environment"
+            }
+        }
 
-                        withCredentials([usernamePassword(credentialsId: 'server-creds', usernameVariable: "myuser", passwordVariable: "mypassword")]) {
-                            sh '''
-                            echo username: ${myuser}
-                            echo password: ${mypassword}
-                            '''
-                        }
 
-                    }
-                }
-
-                stage('Test'){
-                    steps {
-                        sh 'pip3 --version'
-                    }
-                }
 
     }
 }
