@@ -9,9 +9,10 @@ pipeline {
 
         stage ('Setup') {
             steps {
+
                 sh "ifconfig"
                 sh "pwd"
-                sh "pip3 install -r requirements.txt"
+                sh "pip install -r requirements.txt"
             }
         }
 
