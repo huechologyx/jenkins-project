@@ -1,27 +1,28 @@
 pipeline {
-    agent any
-
-parameters {
-    string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Specify the environment for development')
-    booleanParam(name: 'RUN_TESTS', defaultValue: true, description: "Run Tests in pipeline")
-
-}
+ 
+agent any
 
     stages {
-        stage('Test') {
-            when {
-                expression {
-                    params.RUN_TESTS == true
+        stage('Setup') {
+                steps {
+                    echo "setup is being done"
                 }
-            }
-            steps {
-            echo "testing application"
-            }
+        }
+
+          stage('Test') {
+                steps {
+                    echo "Test is being done"
+                }
         }
 
         stage('Deploy'){
+
+            input {
+                message "Do you want to proceed further?"
+                ok "Yes"
+            }
             steps {
-                echo "deploying to ${params.ENVIRONMENT} environment"
+                echo "Running Deployment"
             }
         }
 
