@@ -29,11 +29,11 @@ pipeline {
                     }
                 }
 
-                // stage('Test'){
-                //     steps {
-                //         sh 'pytest'
-                //     }
-                // }
+                stage('Test'){
+                    steps {
+                        sh 'pip3 --version'
+                    }
+                }
 
         // stage('Checkout') {
         //     steps {
